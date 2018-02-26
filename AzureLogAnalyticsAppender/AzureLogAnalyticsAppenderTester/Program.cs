@@ -9,11 +9,14 @@ namespace AzureLogAnalyticsAppenderTester
         {
             log4net.Config.XmlConfigurator.Configure();
             var logger = LogManager.GetLogger(typeof(Program));
-            logger.Info("Info message.");
-            logger.Debug("Debug message.");
-            logger.Warn("Warning  message.");
-            logger.Error("Error message.", new ArgumentNullException(nameof(args)));
-            logger.Fatal("Fatal message.", new ArgumentNullException(nameof(args)));
+            for (int i = 0; i < 10; i++)
+            {
+                logger.Info($"INFO message {i}");
+            }
+            //logger.Debug("Debug message.");
+            //logger.Warn("Warning  message.");
+            //logger.Error("Error message.", new ArgumentNullException(nameof(args)));
+            //logger.Fatal("Fatal message.", new ArgumentNullException(nameof(args)));
 
             Console.ReadKey();
         }

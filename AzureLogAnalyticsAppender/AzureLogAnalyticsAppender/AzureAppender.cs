@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.IO;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using log4net.Appender;
 using log4net.Core;
 using Newtonsoft.Json;
@@ -31,6 +33,32 @@ namespace AzureLogAnalyticsAppender
         /// </summary>
         // ReSharper disable once MemberCanBePrivate.Global
         public string LogType { get; set; }
+
+        private ConcurrentQueue<AzureLoggingEvent> azureLoggingEventQueue;
+
+        public AzureAppender()
+        {
+            azureLoggingEventQueue = new ConcurrentQueue<AzureLoggingEvent>();
+            ThreadPool.QueueUserWorkItem((Object stateInfo) =>
+            {
+                while (true)
+                {
+                    if (azureLoggingEventQueue.Count > 0)
+                    {
+                        azureLoggingEventQueue.TryDequeue(out AzureLoggingEvent loggingEvent);
+                        if (loggingEvent != null)
+                        {
+                            string jsonMessage = JsonConvert.SerializeObject(loggingEvent);
+                            Post(jsonMessage);
+                        }
+                    }
+                    else
+                    {
+                        Thread.Sleep(100);
+                    }
+                }
+            });
+        }
 
         /// <summary>
         /// Subclasses of <see cref="T:log4net.Appender.AppenderSkeleton" /> should implement this method
@@ -66,9 +94,10 @@ namespace AzureLogAnalyticsAppender
                     return loggingEvent.RenderedMessage;
                 });
 
-            string jsonMessage = JsonConvert.SerializeObject(serializableEvent);
+            azureLoggingEventQueue.Enqueue(serializableEvent);
 
-            Post(jsonMessage);
+            //string jsonMessage = JsonConvert.SerializeObject(serializableEvent);
+            //Post(jsonMessage);
         }
 
         private void Post(string json, string apiVersion = "2016-04-01")

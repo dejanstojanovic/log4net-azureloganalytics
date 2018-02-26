@@ -1,0 +1,10 @@
+D:\Github\log4net-azureloganalytics\AzureLogAnalyticsAppender\AzureLogAnalyticsAppender\bin\Debug\AzureLogAnalyticsAppender.dll
+D:\Github\log4net-azureloganalytics\AzureLogAnalyticsAppender\AzureLogAnalyticsAppender\bin\Debug\AzureLogAnalyticsAppender.pdb
+D:\Github\log4net-azureloganalytics\AzureLogAnalyticsAppender\AzureLogAnalyticsAppender\bin\Debug\log4net.dll
+D:\Github\log4net-azureloganalytics\AzureLogAnalyticsAppender\AzureLogAnalyticsAppender\bin\Debug\Newtonsoft.Json.dll
+D:\Github\log4net-azureloganalytics\AzureLogAnalyticsAppender\AzureLogAnalyticsAppender\bin\Debug\log4net.xml
+D:\Github\log4net-azureloganalytics\AzureLogAnalyticsAppender\AzureLogAnalyticsAppender\bin\Debug\Newtonsoft.Json.xml
+D:\Github\log4net-azureloganalytics\AzureLogAnalyticsAppender\AzureLogAnalyticsAppender\obj\Debug\AzureLogAnalyticsAppender.csprojResolveAssemblyReference.cache
+D:\Github\log4net-azureloganalytics\AzureLogAnalyticsAppender\AzureLogAnalyticsAppender\obj\Debug\AzureLogAnalyticsAppender.csproj.CoreCompileInputs.cache
+D:\Github\log4net-azureloganalytics\AzureLogAnalyticsAppender\AzureLogAnalyticsAppender\obj\Debug\AzureLogAnalyticsAppender.dll
+D:\Github\log4net-azureloganalytics\AzureLogAnalyticsAppender\AzureLogAnalyticsAppender\obj\Debug\AzureLogAnalyticsAppender.pdb
